@@ -1,0 +1,45 @@
+Conceptual Problems - Milestone 2
+Nama: Gugun Gunawan
+
+Batch: FTDS-038
+
+1. Jelaskan latar belakang penggunaan Bagging dan cara kerjanya!
+Latar Belakang: Bagging (Bootstrap Aggregating) digunakan untuk mengatasi masalah High Variance pada model Machine Learning (khususnya Decision Tree). Model tunggal seringkali terlalu sensitif terhadap fluktuasi kecil pada data training (overfitting). Bagging hadir untuk meningkatkan stabilitas dan akurasi model dengan cara menggabungkan hasil dari banyak model.
+
+Cara Kerja:
+
+Bootstrapping: Membuat beberapa subset data baru dengan mengambil sampel secara acak dengan pengembalian (random sampling with replacement) dari dataset asli.
+
+Parallel Training: Melatih model (misal: Decision Tree) secara independen dan bersamaan pada setiap subset data tersebut.
+
+Aggregating: Menggabungkan prediksi dari seluruh model. Untuk klasifikasi biasanya menggunakan Majority Voting (suara terbanyak), sedangkan untuk regresi menggunakan rata-rata (Average).
+
+2. Jelaskan perbedaan cara kerja algoritma Random Forest dengan algoritma Boosting!
+Meskipun keduanya adalah teknik Ensemble, perbedaannya terletak pada cara mereka membangun model:
+
+Random Forest (Parallel):
+
+Membangun banyak Decision Tree secara mandiri/paralel.
+
+Setiap tree hanya melihat subset fitur yang dipilih secara acak (Feature Randomness).
+
+Tujuannya adalah mengurangi Variance (mencegah overfitting).
+
+Boosting (Sequential):
+
+Membangun model secara berurutan/sekuensial. Model baru mencoba memperbaiki kesalahan (error) yang dibuat oleh model sebelumnya.
+
+Data yang salah diprediksi akan diberi bobot lebih besar agar dipelajari lebih dalam oleh model berikutnya.
+
+Tujuannya adalah mengurangi Bias (meningkatkan kekuatan prediksi dari model yang lemah/weak learners).
+
+3. Jelaskan apa yang dimaksud dengan Cross Validation!
+Cross Validation adalah teknik evaluasi model dengan cara membagi dataset menjadi beberapa subset (disebut folds) untuk memastikan bahwa model memiliki performa yang stabil dan tidak hanya "hafal" pada satu bagian data saja.
+
+Cara Kerja (Contoh K-Fold Cross Validation):
+
+Data dibagi menjadi K bagian (misal 5-fold).
+
+Proses iterasi dilakukan sebanyak 5 kali. Pada setiap iterasi, 4 bagian digunakan untuk training dan 1 bagian sisanya digunakan sebagai data uji (validation set).
+
+Hasil akhirnya adalah rata-rata skor dari ke-5 iterasi tersebut. Teknik ini sangat berguna untuk mendeteksi overfitting dan memberikan estimasi performa model yang lebih akurat pada data yang belum pernah dilihat (unseen data).
